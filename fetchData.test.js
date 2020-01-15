@@ -27,6 +27,7 @@ test('判断接口返回结果为 404', () => {
 })
 
 // 期望是正确接口，测试错误接口404
+/*
 test('期望正确，测试404，断言', () => {
   expect.assertions(1)
   // 因为 fetchPromise 是一个正确的接口，catch 不会捕获到错误，故测试代码不会执行
@@ -34,7 +35,7 @@ test('期望正确，测试404，断言', () => {
   return fetchPromise().catch(err => {
     expect(err.toString().indexOf('404') > -1).toBe(true)
   })
-})
+}) */
 
 // 对比
 test('未知接口，测试404，断言', () => {
