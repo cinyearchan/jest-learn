@@ -1,16 +1,14 @@
 <template>
-  <div class="hello">
-    <h1 class="mmm abc">{{ msg }}</h1>
+  <div>
+    <h1>TodoList</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String
-  }
-};
+  name: 'TodoList',
+  props: {}
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
