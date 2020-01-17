@@ -1,9 +1,9 @@
 <template>
   <div>
     <Header @add="addUndoItem" />
-    <ul>
+    <!-- <ul>
       <li v-for="item in undoList" :key="item">{{ item }}</li>
-    </ul>
+    </ul>-->
     <UndoList :list="undoList" @delete="handleItemDelete" />
   </div>
 </template>
