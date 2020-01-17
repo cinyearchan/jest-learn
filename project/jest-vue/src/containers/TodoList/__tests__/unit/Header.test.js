@@ -1,10 +1,11 @@
 /* eslint-disable no-undef */
 import { shallowMount } from '@vue/test-utils'
 import Header from '../../components/Header.vue'
+import { findTestWrapper } from '../../../../utils/testUtils'
 
 it('Header 包含 input 框', () => {
   const wrapper = shallowMount(Header)
-  const input = wrapper.find('[data-test="input"]')
+  const input = findTestWrapper(wrapper, 'input')
   expect(input.exists()).toBe(true)
 })
 
@@ -21,7 +22,7 @@ it('Header 样式发生改变，做出提示', () => {
 
 it('Header 中 input 框输入回车，有内容时，向外触发事件，同时清空 inputValue', () => {
   const wrapper = shallowMount(Header)
-  const input = wrapper.find('[data-test="input"]')
+  const input = findTestWrapper(wrapper, 'input')
   input.setValue('dell lee')
   input.trigger('keyup.enter')
   expect(wrapper.emitted().add).toBeTruthy()
@@ -30,7 +31,7 @@ it('Header 中 input 框输入回车，有内容时，向外触发事件，同�
 
 it('Header 中 input 框输入回车，无内容时，无反应', () => {
   const wrapper = shallowMount(Header)
-  const input = wrapper.find('[data-test="input"]')
+  const input = findTestWrapper(wrapper, 'input')
   input.setValue('')
   input.trigger('keyup.enter')
   expect(wrapper.emitted().add).toBeFalsy()
