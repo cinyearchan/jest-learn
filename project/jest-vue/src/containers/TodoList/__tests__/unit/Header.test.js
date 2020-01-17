@@ -14,6 +14,11 @@ it('Header 中 input 框初始内容为空', () => {
   expect(inputValue).toBe('')
 })
 
+it('Header 样式发生改变，做出提示', () => {
+  const wrapper = shallowMount(Header)
+  expect(wrapper).toMatchSnapshot()
+})
+
 it('Header 中 input 框输入回车，有内容时，向外触发事件，同时清空 inputValue', () => {
   const wrapper = shallowMount(Header)
   const input = wrapper.find('[data-test="input"]')
