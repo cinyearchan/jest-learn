@@ -6,7 +6,7 @@
     </div>
     <ul class="list">
       <li class="item" v-for="(item, index) in list" :key="index" data-test="item">
-        {{ item }}
+        {{ item.value }}
         <span
           class="delete"
           data-test="delete-button"

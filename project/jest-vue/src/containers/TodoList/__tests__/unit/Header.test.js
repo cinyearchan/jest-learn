@@ -23,7 +23,7 @@ describe('Header 组件', () => {
   it('input 框输入回车，有内容时，向外触发事件，同时清空 inputValue', () => {
     const wrapper = shallowMount(Header)
     const input = findTestWrapper(wrapper, 'input')
-    input.setValue('dell lee')
+    input.setValue('hello world')
     input.trigger('keyup.enter')
     expect(wrapper.emitted().add).toBeTruthy()
     expect(wrapper.vm.$data.inputValue).toBe('')

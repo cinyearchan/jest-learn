@@ -23,10 +23,19 @@ describe('TodoList 组件', () => {
     // 单元测试内容
     const wrapper = shallowMount(TodoList)
     wrapper.setData({
-      undoList: [1, 2, 3]
+      undoList: [
+        { status: 'div', value: 1 },
+        { status: 'div', value: 2 },
+        { status: 'div', value: 3 }
+      ]
     })
     wrapper.vm.addUndoItem(4)
-    expect(wrapper.vm.$data.undoList).toEqual([1, 2, 3, 4])
+    expect(wrapper.vm.$data.undoList).toEqual([
+      { status: 'div', value: 1 },
+      { status: 'div', value: 2 },
+      { status: 'div', value: 3 },
+      { status: 'div', value: 4 }
+    ])
   })
 
   it('被调用，应该传递 list 参数', () => {
@@ -39,9 +48,16 @@ describe('TodoList 组件', () => {
   it('handleItemDelete 方法被调用时，列表内容会减少一个', () => {
     const wrapper = shallowMount(TodoList)
     wrapper.setData({
-      undoList: [1, 2, 3]
+      undoList: [
+        { status: 'div', value: 1 },
+        { status: 'div', value: 2 },
+        { status: 'div', value: 3 }
+      ]
     })
     wrapper.vm.handleItemDelete(1)
-    expect(wrapper.vm.$data.undoList).toEqual([1, 3])
+    expect(wrapper.vm.$data.undoList).toEqual([
+      { status: 'div', value: 1 },
+      { status: 'div', value: 3 }
+    ])
   })
 })
