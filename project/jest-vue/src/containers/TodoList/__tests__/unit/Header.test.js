@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { shallowMount } from '@vue/test-utils'
 import Header from '../../components/Header.vue'
 import { findTestWrapper } from '../../../../utils/testUtils'
