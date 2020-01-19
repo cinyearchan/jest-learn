@@ -6,7 +6,7 @@ import UndoList from '../../components/UndoList.vue'
 describe('TodoList 组件', () => {
   it('初始化时，列表应该为空', () => {
     const wrapper = shallowMount(TodoList)
-    const undoList = wrapper.vm.$data.undoList
+    const undoList = wrapper.vm.undoList
     expect(undoList).toEqual([])
   })
 
@@ -17,7 +17,7 @@ describe('TodoList 组件', () => {
     const wrapper = shallowMount(TodoList)
     const header = wrapper.find(Header)
     header.vm.$emit('add', content)
-    const undoList = wrapper.vm.$data.undoList
+    const undoList = wrapper.vm.undoList
     expect(undoList).toEqual([content])
     */
     // 单元测试内容
@@ -30,7 +30,7 @@ describe('TodoList 组件', () => {
       ]
     })
     wrapper.vm.addUndoItem(4)
-    expect(wrapper.vm.$data.undoList).toEqual([
+    expect(wrapper.vm.undoList).toEqual([
       { status: 'div', value: 1 },
       { status: 'div', value: 2 },
       { status: 'div', value: 3 },
@@ -55,7 +55,7 @@ describe('TodoList 组件', () => {
       ]
     })
     wrapper.vm.handleItemDelete(1)
-    expect(wrapper.vm.$data.undoList).toEqual([
+    expect(wrapper.vm.undoList).toEqual([
       { status: 'div', value: 1 },
       { status: 'div', value: 3 }
     ])
@@ -71,7 +71,7 @@ describe('TodoList 组件', () => {
       ]
     })
     wrapper.vm.handleStatusChange(1)
-    expect(wrapper.vm.$data.undoList).toEqual([
+    expect(wrapper.vm.undoList).toEqual([
       { status: 'div', value: 1 },
       { status: 'input', value: 2 },
       { status: 'div', value: 3 }
@@ -88,7 +88,7 @@ describe('TodoList 组件', () => {
       ]
     })
     wrapper.vm.handleStatusReset()
-    expect(wrapper.vm.$data.undoList).toEqual([
+    expect(wrapper.vm.undoList).toEqual([
       { status: 'div', value: 1 },
       { status: 'div', value: 2 },
       { status: 'div', value: 3 }
@@ -108,7 +108,7 @@ describe('TodoList 组件', () => {
       index: 1,
       value: '444'
     })
-    expect(wrapper.vm.$data.undoList).toEqual([
+    expect(wrapper.vm.undoList).toEqual([
       { status: 'div', value: 1 },
       { status: 'input', value: '444' },
       { status: 'div', value: 3 }

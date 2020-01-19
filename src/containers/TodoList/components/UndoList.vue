@@ -13,6 +13,7 @@
         @click="() => {changeStatus(index, 1)}"
       >
         <input
+          class="user-input"
           type="text"
           v-if="item.status === 'input'"
           data-test="input"
@@ -106,7 +107,7 @@ export default {
   cursor: pointer;
 }
 
-.input {
+.user-input {
   width: 460px;
   height: 22px;
   text-indent: 10px;
