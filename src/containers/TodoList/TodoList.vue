@@ -4,7 +4,13 @@
     <!-- <ul>
       <li v-for="item in undoList" :key="item">{{ item }}</li>
     </ul>-->
-    <UndoList :list="undoList" @delete="handleItemDelete" />
+    <UndoList
+      :list="undoList"
+      @delete="handleItemDelete"
+      @status="handleStatusChange"
+      @reset="handleStatusReset"
+      @change="changeItemValue"
+    />
   </div>
 </template>
 
@@ -31,6 +37,30 @@ export default {
     },
     handleItemDelete(index) {
       this.undoList.splice(index, 1)
+    },
+    handleStatusChange(index) {
+      const newList = []
+      this.undoList.forEach((item, itemIndex) => {
+        newList.push({
+          status: itemIndex === index ? 'input' : 'div',
+          value: item.value
+        })
+      })
+      this.undoList = newList
+    },
+    handleStatusReset() {
+      this.undoList = this.undoList.map(item => {
+        return {
+          status: 'div',
+          value: item.value
+        }
+      })
+    },
+    changeItemValue(target) {
+      this.undoList.splice(target.index, 1, {
+        status: 'input',
+        value: target.value
+      })
     }
   }
 }

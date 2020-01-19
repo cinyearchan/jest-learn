@@ -5,13 +5,23 @@
       <span data-test="count" class="count">{{ list.length }}</span>
     </div>
     <ul class="list">
-      <li class="item" v-for="(item, index) in list" :key="index" data-test="item">
-        {{ item.value }}
-        <span
-          class="delete"
-          data-test="delete-button"
-          @click="() => {handleClick(index)}"
-        >-</span>
+      <li
+        class="item"
+        v-for="(item, index) in list"
+        :key="index"
+        data-test="item"
+        @click="() => {changeStatus(index, 1)}"
+      >
+        <input
+          type="text"
+          v-if="item.status === 'input'"
+          data-test="input"
+          :value="item.value"
+          @blur="handleInputBlur"
+          @change="(e) => { handleInputChange(e.target.value, index) }"
+        />
+        <span v-else>{{ item.value }}</span>
+        <span class="delete" data-test="delete-button" @click="() => {handleClick(index)}">-</span>
       </li>
     </ul>
   </div>
@@ -24,6 +34,15 @@ export default {
   methods: {
     handleClick(index) {
       this.$emit('delete', index)
+    },
+    changeStatus(index, state) {
+      this.$emit('status', index)
+    },
+    handleInputBlur() {
+      this.$emit('reset')
+    },
+    handleInputChange(value, index) {
+      this.$emit('change', { value, index })
     }
   }
 }
@@ -85,5 +104,11 @@ export default {
   color: #000;
   text-indent: 0px;
   cursor: pointer;
+}
+
+.input {
+  width: 460px;
+  height: 22px;
+  text-indent: 10px;
 }
 </style>

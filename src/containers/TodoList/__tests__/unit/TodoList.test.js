@@ -60,4 +60,58 @@ describe('TodoList 组件', () => {
       { status: 'div', value: 3 }
     ])
   })
+
+  it('handleStatusChange 方法执行时，UndoList 内容变化', () => {
+    const wrapper = shallowMount(TodoList)
+    wrapper.setData({
+      undoList: [
+        { status: 'div', value: 1 },
+        { status: 'div', value: 2 },
+        { status: 'div', value: 3 }
+      ]
+    })
+    wrapper.vm.handleStatusChange(1)
+    expect(wrapper.vm.$data.undoList).toEqual([
+      { status: 'div', value: 1 },
+      { status: 'input', value: 2 },
+      { status: 'div', value: 3 }
+    ])
+  })
+
+  it('handleStatusReset 方法执行时，UndoList 内容变化', () => {
+    const wrapper = shallowMount(TodoList)
+    wrapper.setData({
+      undoList: [
+        { status: 'div', value: 1 },
+        { status: 'input', value: 2 },
+        { status: 'div', value: 3 }
+      ]
+    })
+    wrapper.vm.handleStatusReset()
+    expect(wrapper.vm.$data.undoList).toEqual([
+      { status: 'div', value: 1 },
+      { status: 'div', value: 2 },
+      { status: 'div', value: 3 }
+    ])
+  })
+
+  it('changeItemValue 方法执行时，UndoList 内容变化', () => {
+    const wrapper = shallowMount(TodoList)
+    wrapper.setData({
+      undoList: [
+        { status: 'div', value: 1 },
+        { status: 'input', value: 2 },
+        { status: 'div', value: 3 }
+      ]
+    })
+    wrapper.vm.changeItemValue({
+      index: 1,
+      value: '444'
+    })
+    expect(wrapper.vm.$data.undoList).toEqual([
+      { status: 'div', value: 1 },
+      { status: 'input', value: '444' },
+      { status: 'div', value: 3 }
+    ])
+  })
 })
