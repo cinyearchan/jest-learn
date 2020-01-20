@@ -57,3 +57,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 3. 测试与业务的解耦
 4. 代码测试覆盖率并不代表一定靠谱
 5. 功能测试及 UI 测试
+6. 测试越独立，隐藏的问题越多
