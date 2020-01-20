@@ -5,7 +5,7 @@
       <input
         class="header-input"
         placeholder="TodoItem"
-        data-test="input"
+        data-test="header-input"
         v-model="inputValue"
         @keyup.enter="addTodoItem"
       />

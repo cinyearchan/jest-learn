@@ -9,7 +9,7 @@
         class="item"
         v-for="(item, index) in list"
         :key="index"
-        data-test="item"
+        data-test="list-item"
         @click="() => {changeStatus(index, 1)}"
       >
         <input
