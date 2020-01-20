@@ -1,17 +1,14 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+  <div>not found</div>
 </template>
 
 <script>
 export default {
-  name: 'app',
-  components: {}
+  name: 'not-found'
 }
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
 * {
   margin: 0;
   padding: 0;
